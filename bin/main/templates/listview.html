@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>商品一覧</title>
+</head>
+<body>
+<table border="1">
+    <caption>商品一覧</caption>
+    <thead>
+    <tr>
+    <th>商品名</th>
+    <th>価格(税込)</th>
+    <th>個数</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${list}">
+    <td th:text="${item.name}"></td>
+    <td th:text="${item.price}"></td>
+    <td>
+    <form th:action="@{/order}" th:object="${listForm}" method="GET">
+    <select name="num">
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	</select>
+    <td>
+    <input type="hidden" name="name" th:value="${item.name}" />
+    <input type="hidden" name="price" th:value="${item.price}" />
+    <input type="submit" value="カートに追加" />
+    </form>
+    </td>
+    </tr>
+    <tr>
+    <td colspan="3">
+    <form th:action="@{/purchase}" th:object="${listForm}" method="GET">
+    <input type="submit" value="カートの確認する" />
+    </form>
+    </td>
+    </tr>
+    </tbody>
+
+</table>
+</body>
+</html>

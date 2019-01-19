@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>商品一覧</title>
+</head>
+<body>
+<table border="1">
+    <caption>購入商品一覧</caption>
+    <thead>
+    <tr>
+      <th>商品名</th>
+      <th>個数</th>
+      <th>価格(税込)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${order}">
+      <td th:text="${order.name}"></td>
+      <td th:text="${order.num}"></td>
+      <td th:text="${order.price}"></td>
+    </tr>
+    <tr>
+    <td colspan="2">合計金額</td>
+    <td th:text="${total}">></td>
+    </tr>
+    </tbody>
+
+</table>
+</body>
+</html>
